@@ -1,245 +1,272 @@
+<?php
+session_start();
+if (empty($_SESSION['active'])) {
+  header('location: ../index.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="sistemaUser/resources/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="sistemaUser/resources/fontawesome/all.css">
-	<link rel="stylesheet" href="sistemaUser/resources/css/estilos.css">
-	<title>ITO | Inicio</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ITO | Home</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
 </head>
 
-<body>
-	<header>
-		<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="index.php">OUTSOURCING</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-					data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-					aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="index.php"><i class="fa-solid fa-house"></i> Inicio</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#"><i class="fa-solid fa-file-pdf"></i> Convocatorias</a>
-						</li>
-					</ul>
-					<a href="#" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#login"><i class="fa-solid fa-right-from-bracket"></i> Ingresar</a>
-				</div>
-			</div>
-		</nav>
-	</header>
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="controller/salir.php" class="nav-link">Cerrar Sesion</a>
+        </li>
+      </ul>
 
-  <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="sistemaUser/resources/img/banner1.jfif" class="d-block w-100"
-                    style="min-height: 450px; max-height: 450px;" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="sistemaUser/resources/img/banner2.jfif" class="d-block w-100"
-                    style="min-height: 450px; max-height: 450px;" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="sistemaUser/resources/img/banner3.jfif" class="d-block w-100"
-                    style="min-height: 450px; max-height: 450px;" alt="...">
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-    </div>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+            <i class="fas fa-search"></i>
+          </a>
+          <div class="navbar-search-block">
+            <form class="form-inline">
+              <div class="input-group input-group-sm">
+                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                  <button class="btn btn-navbar" type="submit">
+                    <i class="fas fa-search"></i>
+                  </button>
+                  <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </li>
+      </ul>
+    </nav>
 
-	<!--MODAL DE INICIO DE SESION-->
-    <div class="modal fade" id="login" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
-        tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalToggleLabel" style="color: #0C1B4B;"><i
-                            class="fa-solid fa-user-circle fa-1x"></i> <strong>INICIA SESION</strong></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <img src="sistemaUser/resources/img/avatar.png" style="margin: auto; display:block; margin-bottom: 10px; width: 200px;" alt="">
-                    <form action="" method="post">
-						<?php include("sistemaUser/controller/login.php"); ?>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
-                            <input type="text" class="form-control" placeholder="Username" aria-label="user"
-                                aria-describedby="basic-addon1" name="username" id="username">
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-key"></i></span>
-                            <input type="password" class="form-control" placeholder="Contraseña" aria-label="password"
-                                aria-describedby="basic-addon1" name="password" id="password">
-                        </div>
-                        <input type="submit" class="btn btn-success w-100" value="ENTRAR">
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#registro">Registrarse <i class="fa-solid fa-pen-to-square"></i></button>
-                </div>
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <a href="index3.html" class="brand-link">
+        <img src="resources/img/IToLogo.png" alt="AdminLTE Logo" class="brand-image">
+        <span class="brand-text font-weight-light"><strong>OUTSOURCING</strong></span>
+      </a>
+
+      <div class="sidebar">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <img src="resources/img/avatar.png" class="img-circle elevation-2" alt="User Image">
+          </div>
+          <div class="info">
+            <a href="perfil.php?id=<?php echo $_SESSION['idUser']; ?>" class="d-block"><?php echo $_SESSION['user']; ?></a>
+          </div>
+        </div>
+
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item">
+              <a href="index.php" class="nav-link active">
+                <i class="nav-icon fas fa-house"></i>
+                <p>
+                  Home
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="view/usuarios.php" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                <p>
+                  Usuarios
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                  Aspirantes
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-file"></i>
+                <p>
+                  Expedientes
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="view/ofertas.php" class="nav-link">
+                <i class="nav-icon fas fa-file-pdf"></i>
+                <p>
+                  Ofertas de Trabajo
+                </p>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
+
+    <div class="content-wrapper">
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0">Bienvenido al sistema <strong><?php echo $_SESSION['user']; ?></strong></h1>
             </div>
-        </div>
-    </div>
-
-	    <!--MODAL DE REGISTRO DE USUARIOS-->
-		<div class="modal fade" id="registro" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
-		tabindex="-1">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalToggleLabel" style="color: #0C1B4B;"><i class="fa-solid fa-pen-to-square"></i> <strong>REGISTRATE ¡YA!</strong></h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<img src="sistemaUser/resources/img/user.png" style="margin: auto; display:block; margin-bottom: 10px; width: 200px;" alt="">
-					<form action="sistemaUser/controller/registro.php" method="post">
-						<div class="input-group mb-3">
-							<span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
-							<input type="text" class="form-control" placeholder="Username" aria-label="user"
-								aria-describedby="basic-addon1" name="username" id="username" required>
-						</div>
-						<div class="input-group mb-3">
-							<span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
-							<input type="text" class="form-control" placeholder="Correo electronico" aria-label="correo"
-								aria-describedby="basic-addon1" name="correo" id="correo" required>
-						</div>
-						<div class="input-group mb-3">
-							<span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-key"></i></span>
-							<input type="password" class="form-control" placeholder="Contraseña" aria-label="password"
-								aria-describedby="basic-addon1" name="password" id="password" required>
-						</div>
-						<input type="submit" class="btn btn-primary w-100" onclick="javascript: myFunction();" value="REGISTRARSE">
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn_add btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#login">Inicia Sesión <i class="fa-solid fa-pen-to-square"></i></button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-  <!--INICIO DE SESION ADMINISTRADOR-->
-  <div class="modal fade" id="loginAdmin" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
-        tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalToggleLabel" style="color: #0C1B4B;"><i
-                            class="fa-solid fa-user-circle fa-1x"></i> <strong>INICIA SESION</strong></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <img src="sistemaUser/resources/img/avatar.png" style="margin: auto; display:block; margin-bottom: 10px; width: 200px;" alt="">
-                    <form action="sistemaAdmin/controller/login.php" method="post">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
-                            <input type="text" class="form-control" placeholder="Username" aria-label="user"
-                                aria-describedby="basic-addon1" name="username" id="username">
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-key"></i></span>
-                            <input type="password" class="form-control" placeholder="Contraseña" aria-label="password"
-                                aria-describedby="basic-addon1" name="password" id="password">
-                        </div>
-                        <input type="submit" class="btn btn-success w-100" value="ENTRAR">
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-<footer class="text-center text-lg-start bg-light text-muted">
-  <section class="">
-    <div class="container text-center text-md-start mt-5">
-      <div class="row mt-3">
-        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-          <h6 class="text-uppercase fw-bold mb-4">
-            <i class="fas fa-gem me-3"></i>Outsourcing
-          </h6>
-          <p>
-            Outsourcing es un servicio web en donde varias empresas publican ofertas de trabajo, con el proposito de encontrar aspirantes para trabajar.
-          </p>
-        </div>
-        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-          <h6 class="text-uppercase fw-bold mb-4">
-            Empresas
-          </h6>
-          <p>
-            <a href="#!" class="text-reset">TecnoTeam2.0</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">TecnoCode</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Aurum</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Metodology</a>
-          </p>
-        </div>
-        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-          <h6 class="text-uppercase fw-bold mb-4">
-            Servicios
-          </h6>
-          <p>
-            <a href="#!" class="text-reset">Ofertas de Trabajo</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Conocenos</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Contactanos</a>
-          </p>
-          <p>
-            <a href="#!" data-bs-toggle="modal" data-bs-target="#loginAdmin" class="text-reset">Administrador</a>
-          </p>
-        </div>
-        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-          <h6 class="text-uppercase fw-bold mb-4">Contacto</h6>
-          <p><i class="fas fa-home me-3"></i> Estado de Mexico, Cd. Nezahualcoyotl</p>
-          <p>
-            <i class="fas fa-envelope me-3"></i>
-            outsourcing@gmail.com
-          </p>
-          <p><i class="fas fa-phone me-3"></i> + 52 55 48 83 19 87</p>
-          <p><i class="fas fa-print me-3"></i> + 52 55 67 89 09 12</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-    © 2021 Copyright:
-    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-  </div>
-</footer>
 
-	<script src="sistemaUser/resources/bootstrap/js/bootstrap.bundle.js"></script>
-	<script src="sistemaUser/resources/js/jquery-3.6.0.min.js"></script>
-	<script src="sistemaUser/resources/fontawesome/all.js"></script>
-	<!--<script src="https://kit.fontawesome.com/69562f358e.js" crossorigin="anonymous"></script>-->
-	<script>
-        $(".navbar-collapse ul li a").on('click', function () {
-            $(".navbar-collapse ul li a.active").removeClass('active');
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">Usuarios</h5>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <p class="card-text">Total: 24</p>
+                    </div>
+                    <div class="col-md-6 text-center">
+                      <i class="fa-solid fa-users fa-2x"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <a href="view/usuarios.php" class="btn btn-primary w-100">Administrar</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">Clientes</h5>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <p class="card-text">Total: 24</p>
+                    </div>
+                    <div class="col-md-6 text-center">
+                    <i class="fa-solid fa-building fa-2x"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <a href="view/usuarios.php" class="btn btn-primary w-100">Administrar</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">Ofertas Activas</h5>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <p class="card-text">Total: 24</p>
+                    </div>
+                    <div class="col-md-6 text-center">
+                      <i class="fa-solid fa-file-pdf fa-2x"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <a href="view/usuarios.php" class="btn btn-primary w-100">Administrar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--SECCION DE LISTADO DE OFERTAS-->
+          <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Ofertas de Trabajo Registradas</h3>
+
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 500px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>Folio</th>
+                      <th>Empresa</th>
+                      <th>Puesto</th>
+                      <th>Fecha Inicio</th>
+                      <th>Fecha Termino</th>
+                      <th>Estatus</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $conexion = mysqli_connect("localhost", "root","","itoutsourcing");
+
+                    $query = mysqli_query($conexion, "SELECT of.*, emp.*, pus.* FROM ofertas of INNER JOIN empresas emp on of.empresa = emp.id_empresa
+                                                                                                          INNER JOIN puestos pus on of.puesto = pus.id_puesto ORDER BY folio ASC");
+                    while ($data = mysqli_fetch_array($query)){
+                    ?>
+                    <tr>
+                      <td><?php echo $data['folio']; ?></td>
+                      <td><?php echo $data['siglas']; ?></td>
+                      <td><?php echo $data['puesto']; ?></td>
+                      <td><?php echo $data['fecha_inicio']; ?></td>
+                      <td><?php echo $data['fecha_fin']; ?></td>
+                      <td><?php echo $data['estatus']; ?></td>
+                    </tr>
+
+                    <?php
+                    }
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+          <!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+  </div>
+
+  </div>
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/69562f358e.js" crossorigin="anonymous"></script>
+  <script src="dist/js/adminlte.min.js"></script>
+  <script>
+        $(".nav li a").on('click', function() {
+            $(".nav li a.active").removeClass('active');
             $(this).addClass('active');
-        }); 
-		
-		function myFunction() {
-                  alert('Usuario agregado correctamente!');
-                }
+        });
     </script>
 </body>
 
