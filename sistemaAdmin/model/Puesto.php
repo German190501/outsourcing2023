@@ -1,0 +1,19 @@
+<?php
+class Puesto{
+
+    public function conectarBD(){
+        $conexion = mysqli_connect("localhost", "root", "maquinaVirtual_2023@eder", "outsourcing") or die("Problemas en la conexión");
+        return $conexion;
+    }
+
+    function llenarListaPuestos(){
+        $registro=mysqli_query($this->conectarBD(), "SELECT * FROM puestos") or die("Problemas en el Select".mysqli_error($this->conectarBD()));
+        while($reg=mysqli_fetch_array($registro)){
+            echo "<option value=$reg[0]>$reg[1]</option>";
+        }
+    }
+
+    public function cerrarBD(){
+        mysqli_close($this->conectarBD());
+    }
+}
