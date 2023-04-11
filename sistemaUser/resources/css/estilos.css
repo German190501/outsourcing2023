@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap');
+.navbar-collapse ul li a.active{
+    border-bottom: 4px solid #5DADE2;
+}
+
+.card_detalle{
+    font-family: 'Roboto' sans-serif;
+    font-size: 18px;
+}
+
+.card_detalle .card-header{
+    letter-spacing: 2px;
+    color: #1E5377;
+    font-weight: bold;
+}
+
+.card_detalle .card-body h5{
+    letter-spacing: 2px;
+    font-size: 25px;
+    color: #154360;
+    font-family: 'Lobster';
+}
+
+.card_detalle .card-body .card-text{
+    letter-spacing: 1px;
+    text-align: justify;
+}
